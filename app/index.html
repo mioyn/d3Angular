@@ -1,59 +1,81 @@
 <!doctype html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>d3 and Angular</title>
     <meta name="description" content="d3 and Angular">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-  </head>
-  <body ng-app="myApp">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">Resize the page or change the numbers to see the d3 re-render!</div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3"><hr></div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3" ng-controller="DemoCtrl">
-        <span>{{title}}</span>
-        <d3-bars data="d3Data" label="name" on-click="d3OnClick(item)"></d3-bars>
-        <br>
-        <br>
-        <span>First Item</span>
-        <input type="text" ng-model="d3Data[0].score"></input>
-        <br>
-        <span>Second Item</span>
-        <input type="text" ng-model="d3Data[1].score"></input>
-        <br>
-        <span>Third Item</span>
-        <input type="text" ng-model="d3Data[2].score"></input>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3"><hr></div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3" ng-controller="DemoCtrl2">
-        <span>{{title}}</span>
-        <d3-bars data="d3Data" label="title"></d3-bars>
-        <br>
-        <br>
-        <span>First Item</span>
-        <input type="text" ng-model="d3Data[0].score"></input>
-        <br>
-        <span>Second Item</span>
-        <input type="text" ng-model="d3Data[1].score"></input>
-        <br>
-        <span>Third Item</span>
-        <input type="text" ng-model="d3Data[2].score"></input>
-      </div>
-    </div>
+</head>
 
+<body ng-app="myApp">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">Resize the page or change the numbers to see the d3 re-render!</div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3" ng-controller="DemoCtrl">
+            <span>{{title}}</span>
+            <d3-bars data="d3Data" label="name" on-click="d3OnClick(item)"></d3-bars>
+            <br>
+            <br>
+            <span>First Item</span>
+            <input type="text" ng-model="d3Data[0].score"></input>
+            <br>
+            <span>Second Item</span>
+            <input type="text" ng-model="d3Data[1].score"></input>
+            <br>
+            <span>Third Item</span>
+            <input type="text" ng-model="d3Data[2].score"></input>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3" ng-controller="DemoCtrl2">
+            <span>{{title}}</span>
+            <d3-bars data="d3Data" label="title"></d3-bars>
+            <br>
+            <br>
+            <span>First Item</span>
+            <input type="text" ng-model="d3Data[0].score"></input>
+            <br>
+            <span>Second Item</span>
+            <input type="text" ng-model="d3Data[1].score"></input>
+            <br>
+            <span>Third Item</span>
+            <input type="text" ng-model="d3Data[2].score"></input>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-controller="AppCtrl">
+            <h1>Github Commit Graph</h1>
+            <form ng-submit="getCommitData()">
+                User:
+                <input ng-model="user"></input>
+                Repo:
+                <input ng-model="repo"></input>
+                <input type="submit" value="Get Data"> Grouped
+                <input type="checkbox" ng-model="grouped">
+            </form>
+            <p class="error">{{error}}</p>
+            <gh-visualization val="data" grouped="grouped"></gh-visualization>
+        </div>
+    </div>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/services/d3.js"></script>
     <script src="scripts/controllers/demoCtrl.js"></script>
     <script src="scripts/controllers/demoCtrl2.js"></script>
+    <script src="scripts/controllers/d3ConnectGit.js"></script>
     <script src="scripts/directives/d3Basic.js"></script>
+    <script src="scripts/directives/ghVisualization.js"></script>
+</body>
 
-  </body>
 </html>
